@@ -46,6 +46,7 @@ public class Main {
                     break;
                 case 9:
                     System.out.println("Closing application");
+                    break;
                 default:
                     System.out.println("Invalid input.");
             }
