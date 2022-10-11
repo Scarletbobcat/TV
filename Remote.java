@@ -1,4 +1,10 @@
+//Tien Hoang
 public class Remote {
+    public Remote(String key1) {
+        manuCode = key1;
+    }
+
+    private String manuCode;
     void pushButton(Button b, TV tv1) {
         if (b == Button.POWER) {
             tv1.powerState();
@@ -16,7 +22,7 @@ public class Remote {
             tv1.flashback();
         }
     }
-
+    String getManuCode() { return manuCode;}
     void channelNum(int x, TV tv1) {
         tv1.setCurrentChannel(x);
     }

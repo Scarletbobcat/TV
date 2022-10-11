@@ -1,19 +1,29 @@
+//Tien Hoang
 public class TV {
     // class attributes
+    private String manuCode;
     private int currentChannel = 0;
     private int prevChannel;
+    private int prevVolume = 0;
     private int volume = 10;
     private boolean mute = false;
     private boolean power = false;
 
+    public TV(String manuCode) {
+        this.manuCode = manuCode;
+    }
+
     // methods of the class
+    public String getManuCode() {return manuCode;}
     private void setPrevChannel(int x) {
-        this.prevChannel = x;
+        prevChannel = x;
     }
 
     private int getCurrentChannel() {
         return currentChannel;
     }
+
+    private void setVolume(int x) {volume = x;}
 
     public void volumeUp() {
         if (this.power) {
@@ -41,10 +51,16 @@ public class TV {
         if (this.power) {
             if (!this.mute) {
                 this.mute = true;
+                this.prevVolume = this.volume;
+                setVolume(0);
                 System.out.println("The TV is now muted\n");
+
             } else {
                 this.mute = false;
-                System.out.println("The TV is now unmuted\n");
+                int temp = volume;
+                setVolume(this.prevVolume);
+                prevVolume = temp;
+                System.out.println("The TV is now unmuted \n");
             }
         }
     }

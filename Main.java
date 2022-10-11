@@ -1,56 +1,134 @@
+//Tien Hoang
 import java.util.Scanner;
 
 public class Main {
     static void menu() {
-        System.out.println(
-                "Please select one of the following options: \n(1)Power\n(2)Mute\n(3)Channel Up\n(4)Channel down");
-        System.out.println("(5)Volume up\n(6)Volume down\n(7)Previous channel\n(8)Select channel\n(9)Exit");
+        System.out.println("Please select one of the following options: \n(P)Power\n(M)Mute\n(U)Channel Up\n(D)Channel down");
+        System.out.println("(+)Volume up\n(-)Volume down\n(F)Previous channel\n(C)Select channel\n(E)Exit");
     }
 
     public static void main(String[] args) {
-        TV tv1 = new TV();
-        Remote remote1 = new Remote();
-        int option;
+        String key1 = "FirstRemote";
+        String key2 = "SecondRemote";
+        Remote remote1 = new Remote(key1);
+        Remote remote2 = new Remote(key2);
+        TV tv1 = new TV(remote1.getManuCode());
+        TV tv2 = new TV(remote2.getManuCode());
+        TV tv3 = new TV(remote1.getManuCode());
+        char option;
 
+        TV[] object1 = {tv1, tv2, tv3};
+        int remote;
         Scanner scanner = new Scanner(System.in);
         do {
-
             menu();
-            option = scanner.nextInt();
+            option = scanner.next().charAt(0);
             switch (option) {
-                case 1:
-                    remote1.pushButton(Button.POWER, tv1);
+                case 'P':
+                    System.out.println("Which remote would you like to use (1 or 2)? ");
+                    remote = scanner.nextInt();
+                    for (int i=0; i<object1.length; i++) {
+                        System.out.println("TV" + (i+1) + ":");
+                        if (remote1.getManuCode().equals(object1[i].getManuCode()) && remote == 1) {
+                            remote1.pushButton(Button.POWER, object1[i]);
+                        }else if (remote2.getManuCode().equals(object1[i].getManuCode()) && remote == 2) {
+                            remote2.pushButton(Button.POWER, object1[i]);
+                        }
+                    }
                     break;
-                case 2:
-                    remote1.pushButton(Button.MUTE, tv1);
+                case 'M':
+                    System.out.println("Which remote would you like to use (1 or 2)? ");
+                    remote = scanner.nextInt();
+                    for (int i=0; i<object1.length; i++) {
+                        System.out.println("TV" + (i+1) + ":");
+                        if (remote1.getManuCode().equals(object1[i].getManuCode()) && remote == 1) {
+                            remote1.pushButton(Button.MUTE, object1[i]);
+                        }else if (remote2.getManuCode().equals(object1[i].getManuCode()) && remote == 2) {
+                            remote2.pushButton(Button.MUTE, object1[i]);
+                        }
+                    }
                     break;
-                case 3:
-                    remote1.pushButton(Button.CHANNEL_UP, tv1);
+                case 'U':
+                    System.out.println("Which remote would you like to use (1 or 2)? ");
+                    remote = scanner.nextInt();
+                    for (int i=0; i<object1.length; i++) {
+                        System.out.println("TV" + (i+1) + ":");
+                        if (remote1.getManuCode().equals(object1[i].getManuCode()) && remote == 1) {
+                            remote1.pushButton(Button.CHANNEL_UP, object1[i]);
+                        }else if (remote2.getManuCode().equals(object1[i].getManuCode()) && remote == 2) {
+                            remote2.pushButton(Button.CHANNEL_UP, object1[i]);
+                        }
+                    }
                     break;
-                case 4:
-                    remote1.pushButton(Button.CHANNEL_DOWN, tv1);
+                case 'D':
+                    System.out.println("Which remote would you like to use (1 or 2)? ");
+                    remote = scanner.nextInt();
+                    for (int i=0; i<object1.length; i++) {
+                        System.out.println("TV" + (i+1) + ":");
+                        if (remote1.getManuCode().equals(object1[i].getManuCode()) && remote == 1) {
+                            remote1.pushButton(Button.CHANNEL_DOWN, object1[i]);
+                        }else if (remote2.getManuCode().equals(object1[i].getManuCode()) && remote == 2) {
+                            remote2.pushButton(Button.CHANNEL_DOWN, object1[i]);
+                        }
+                    }
                     break;
-                case 5:
-                    remote1.pushButton(Button.VOLUME_UP, tv1);
+                case '+':
+                    System.out.println("Which remote would you like to use (1 or 2)? ");
+                    remote = scanner.nextInt();
+                    for (int i=0; i<object1.length; i++) {
+                        System.out.println("TV" + (i+1) + ":");
+                        if (remote1.getManuCode().equals(object1[i].getManuCode()) && remote == 1) {
+                            remote1.pushButton(Button.VOLUME_UP, object1[i]);
+                        }else if (remote2.getManuCode().equals(object1[i].getManuCode()) && remote == 2) {
+                            remote2.pushButton(Button.VOLUME_UP, object1[i]);
+                        }
+                    }
                     break;
-                case 6:
-                    remote1.pushButton(Button.VOLUME_DOWN, tv1);
+                case '-':
+                    System.out.println("Which remote would you like to use (1 or 2)? ");
+                    remote = scanner.nextInt();
+                    for (int i=0; i<object1.length; i++) {
+                        System.out.println("TV" + (i+1) + ":");
+                        if (remote1.getManuCode().equals(object1[i].getManuCode()) && remote == 1) {
+                            remote1.pushButton(Button.VOLUME_DOWN, object1[i]);
+                        }else if (remote2.getManuCode().equals(object1[i].getManuCode()) && remote == 2) {
+                            remote2.pushButton(Button.VOLUME_UP, object1[i]);
+                        }
+                    }
                     break;
-                case 7:
-                    remote1.pushButton(Button.PREV_CHANNEL, tv1);
+                case 'F':
+                    System.out.println("Which remote would you like to use (1 or 2)? ");
+                    remote = scanner.nextInt();
+                    for (int i=0; i<object1.length; i++) {
+                        System.out.println("TV" + (i+1) + ":");
+                        if (remote1.getManuCode().equals(object1[i].getManuCode()) && remote == 1) {
+                            remote1.pushButton(Button.PREV_CHANNEL, object1[i]);
+                        }else if (remote2.getManuCode().equals(object1[i].getManuCode()) && remote == 2) {
+                            remote2.pushButton(Button.PREV_CHANNEL, object1[i]);
+                        }
+                    }
                     break;
-                case 8:
+                case 'C':
+                    System.out.println("Which remote would you like to use (1 or 2)? ");
+                    remote = scanner.nextInt();
                     System.out.println("Please enter a channel number 1-9999");
                     int channel = scanner.nextInt();
-                    remote1.channelNum(channel, tv1);
+                    for (int i=0; i<object1.length; i++) {
+                        System.out.println("TV" + (i+1) + ":");
+                        if (remote1.getManuCode().equals(object1[i].getManuCode()) && remote == 1) {
+                            remote1.channelNum(channel, object1[i]);
+                        }else if (remote2.getManuCode().equals(object1[i].getManuCode()) && remote == 2) {
+                            remote2.channelNum(channel, object1[i]);
+                        }
+                    }
                     break;
-                case 9:
+                case 'E':
                     System.out.println("Closing application");
                     break;
                 default:
                     System.out.println("Invalid input.");
             }
-        } while (option != 9);
+        } while (option != 'E');
 
     }
 }
