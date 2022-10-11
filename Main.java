@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 public class Main {
     static void menu() {
-        System.out.println("Please select one of the following options: \n(P)Power\n(M)Mute\n(U)Channel Up\n(D)Channel down");
-        System.out.println("(+)Volume up\n(-)Volume down\n(F)Previous channel\n(C)Select channel\n(E)Exit");
+        System.out.println("\nPlease select one of the following options: \n(O)Power\n(M)Mute\n(U)Channel Up\n(D)Channel down");
+        System.out.println("(+)Volume up\n(-)Volume down\n(F)Flashback channel\n(N)Select channel\n(Q)Exit");
     }
 
     public static void main(String[] args) {
@@ -23,12 +23,13 @@ public class Main {
         do {
             menu();
             option = scanner.next().charAt(0);
+            option = Character.toUpperCase(option);
             switch (option) {
-                case 'P':
+                case 'O':
                     System.out.println("Which remote would you like to use (1 or 2)? ");
                     remote = scanner.nextInt();
                     for (int i=0; i<object1.length; i++) {
-                        System.out.println("TV" + (i+1) + ":");
+                        System.out.println("\nTV" + (i+1) + ":");
                         if (remote1.getManuCode().equals(object1[i].getManuCode()) && remote == 1) {
                             remote1.pushButton(Button.POWER, object1[i]);
                         }else if (remote2.getManuCode().equals(object1[i].getManuCode()) && remote == 2) {
@@ -40,7 +41,7 @@ public class Main {
                     System.out.println("Which remote would you like to use (1 or 2)? ");
                     remote = scanner.nextInt();
                     for (int i=0; i<object1.length; i++) {
-                        System.out.println("TV" + (i+1) + ":");
+                        System.out.println("\nTV" + (i+1) + ":");
                         if (remote1.getManuCode().equals(object1[i].getManuCode()) && remote == 1) {
                             remote1.pushButton(Button.MUTE, object1[i]);
                         }else if (remote2.getManuCode().equals(object1[i].getManuCode()) && remote == 2) {
@@ -52,7 +53,7 @@ public class Main {
                     System.out.println("Which remote would you like to use (1 or 2)? ");
                     remote = scanner.nextInt();
                     for (int i=0; i<object1.length; i++) {
-                        System.out.println("TV" + (i+1) + ":");
+                        System.out.println("\nTV" + (i+1) + ":");
                         if (remote1.getManuCode().equals(object1[i].getManuCode()) && remote == 1) {
                             remote1.pushButton(Button.CHANNEL_UP, object1[i]);
                         }else if (remote2.getManuCode().equals(object1[i].getManuCode()) && remote == 2) {
@@ -64,7 +65,7 @@ public class Main {
                     System.out.println("Which remote would you like to use (1 or 2)? ");
                     remote = scanner.nextInt();
                     for (int i=0; i<object1.length; i++) {
-                        System.out.println("TV" + (i+1) + ":");
+                        System.out.println("\nTV" + (i+1) + ":");
                         if (remote1.getManuCode().equals(object1[i].getManuCode()) && remote == 1) {
                             remote1.pushButton(Button.CHANNEL_DOWN, object1[i]);
                         }else if (remote2.getManuCode().equals(object1[i].getManuCode()) && remote == 2) {
@@ -76,7 +77,7 @@ public class Main {
                     System.out.println("Which remote would you like to use (1 or 2)? ");
                     remote = scanner.nextInt();
                     for (int i=0; i<object1.length; i++) {
-                        System.out.println("TV" + (i+1) + ":");
+                        System.out.println("\nTV" + (i+1) + ":");
                         if (remote1.getManuCode().equals(object1[i].getManuCode()) && remote == 1) {
                             remote1.pushButton(Button.VOLUME_UP, object1[i]);
                         }else if (remote2.getManuCode().equals(object1[i].getManuCode()) && remote == 2) {
@@ -88,7 +89,7 @@ public class Main {
                     System.out.println("Which remote would you like to use (1 or 2)? ");
                     remote = scanner.nextInt();
                     for (int i=0; i<object1.length; i++) {
-                        System.out.println("TV" + (i+1) + ":");
+                        System.out.println("\nTV" + (i+1) + ":");
                         if (remote1.getManuCode().equals(object1[i].getManuCode()) && remote == 1) {
                             remote1.pushButton(Button.VOLUME_DOWN, object1[i]);
                         }else if (remote2.getManuCode().equals(object1[i].getManuCode()) && remote == 2) {
@@ -100,7 +101,7 @@ public class Main {
                     System.out.println("Which remote would you like to use (1 or 2)? ");
                     remote = scanner.nextInt();
                     for (int i=0; i<object1.length; i++) {
-                        System.out.println("TV" + (i+1) + ":");
+                        System.out.println("\nTV" + (i+1) + ":");
                         if (remote1.getManuCode().equals(object1[i].getManuCode()) && remote == 1) {
                             remote1.pushButton(Button.PREV_CHANNEL, object1[i]);
                         }else if (remote2.getManuCode().equals(object1[i].getManuCode()) && remote == 2) {
@@ -108,13 +109,13 @@ public class Main {
                         }
                     }
                     break;
-                case 'C':
+                case 'N':
                     System.out.println("Which remote would you like to use (1 or 2)? ");
                     remote = scanner.nextInt();
                     System.out.println("Please enter a channel number 1-9999");
                     int channel = scanner.nextInt();
                     for (int i=0; i<object1.length; i++) {
-                        System.out.println("TV" + (i+1) + ":");
+                        System.out.println("\nTV" + (i+1) + ":");
                         if (remote1.getManuCode().equals(object1[i].getManuCode()) && remote == 1) {
                             remote1.channelNum(channel, object1[i]);
                         }else if (remote2.getManuCode().equals(object1[i].getManuCode()) && remote == 2) {
@@ -122,13 +123,12 @@ public class Main {
                         }
                     }
                     break;
-                case 'E':
-                    System.out.println("Closing application");
+                case 'Q':
                     break;
                 default:
                     System.out.println("Invalid input.");
             }
-        } while (option != 'E');
+        } while (option != 'Q');
 
     }
 }
