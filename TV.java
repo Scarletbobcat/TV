@@ -1,8 +1,8 @@
 //Tien Hoang
 public class TV {
     // class attributes
-    private String manuCode;
-    private int currentChannel = 0;
+    final private String manuCode;
+    private int currentChannel = 1;
     private int prevChannel;
     private int prevVolume = 0;
     private int volume = 10;
@@ -13,7 +13,7 @@ public class TV {
         this.manuCode = manuCode;
     }
 
-    // methods of the class
+    // methods of the class, all methods only execute if the tv is powered on
     public String getManuCode() {return manuCode;}
     private void setPrevChannel(int x) {
         prevChannel = x;
@@ -27,15 +27,35 @@ public class TV {
 
     public void volumeUp() {
         if (power) {
-            volume = volume + 1;
-            System.out.print("The volume is now " + volume + "\n");
+            if (volume < 40){
+                if (!mute) {
+                    volume = volume + 1;
+                }else {
+                    mute = false;
+                    int temp = volume;
+                    volume = prevVolume;
+                    prevVolume = temp;
+                    volume += 1;
+                }
+            }
+            System.out.println("The volume is now " + volume + "\n");
         }
     }
 
     public void volumeDown() {
         if (power) {
-            volume = volume - 1;
-            System.out.print("The volume is now " + volume + "\n");
+            if (volume > 0){
+                if (!mute) {
+                    volume = volume - 1;
+                }else {
+                    mute = false;
+                    int temp = volume;
+                    volume = prevVolume;
+                    prevVolume = temp;
+                    volume -= 1;
+                }
+            }
+            System.out.println("The volume is now " + volume + "\n");
         }
     }
 
@@ -43,7 +63,7 @@ public class TV {
         if (power) {
             setPrevChannel(getCurrentChannel());
             currentChannel = x;
-            System.out.print("The current channel is now " + currentChannel + "\n");
+            System.out.println("The current channel is now " + currentChannel + "\n");
         }
     }
 
@@ -53,14 +73,14 @@ public class TV {
                 mute = true;
                 prevVolume = volume;
                 setVolume(0);
-                System.out.print("The TV is now muted\n");
-
+                System.out.println("The TV is now muted\n");
             } else {
                 mute = false;
                 int temp = volume;
                 setVolume(prevVolume);
                 prevVolume = temp;
-                System.out.print("The TV is now unmuted \n");
+                System.out.println("The TV is now unmuted\n");
+                System.out.println("The volume is now " + volume + "\n");
             }
         }
     }
@@ -76,10 +96,10 @@ public class TV {
     public void powerState() {
         if (!power) {
             power = true;
-            System.out.print("The TV is now powered on\n");
+            System.out.println("The TV is now powered on\n");
         } else {
             power = false;
-            System.out.print("The TV is now powered off\n");
+            System.out.println("The TV is now powered off\n");
         }
     }
 
@@ -87,15 +107,15 @@ public class TV {
         if (power) {
             setPrevChannel(currentChannel);
             currentChannel = currentChannel + 1;
-            System.out.print("The current channel is now " + currentChannel + "\n");
+            System.out.println("The current channel is now " + currentChannel + "\n");
         }
     }
 
     public void channelDown() {
-        if (power) {
+        if (this.power) {
             setPrevChannel(currentChannel);
             currentChannel = currentChannel - 1;
-            System.out.print("The current channel is now " + currentChannel + "\n");
+            System.out.println("The current channel is now " + currentChannel + "\n");
         }
     }
 }

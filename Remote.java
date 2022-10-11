@@ -4,7 +4,7 @@ public class Remote {
         manuCode = key1;
     }
 
-    private String manuCode;
+    final private String manuCode;
     void pushButton(Button b, TV tv1) {
         if (b == Button.POWER) {
             tv1.powerState();
