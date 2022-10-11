@@ -26,76 +26,76 @@ public class TV {
     private void setVolume(int x) {volume = x;}
 
     public void volumeUp() {
-        if (this.power) {
-            this.volume = this.volume + 1;
-            System.out.println("The volume is now " + this.volume + "\n");
+        if (power) {
+            volume = volume + 1;
+            System.out.print("The volume is now " + volume + "\n");
         }
     }
 
     public void volumeDown() {
-        if (this.power) {
-            this.volume = this.volume - 1;
-            System.out.println("The volume is now " + this.volume + "\n");
+        if (power) {
+            volume = volume - 1;
+            System.out.print("The volume is now " + volume + "\n");
         }
     }
 
     public void setCurrentChannel(int x) {
-        if (this.power) {
+        if (power) {
             setPrevChannel(getCurrentChannel());
-            this.currentChannel = x;
-            System.out.println("The current channel is now " + this.currentChannel + "\n");
+            currentChannel = x;
+            System.out.print("The current channel is now " + currentChannel + "\n");
         }
     }
 
     public void setMute() {
         if (this.power) {
-            if (!this.mute) {
-                this.mute = true;
-                this.prevVolume = this.volume;
+            if (!mute) {
+                mute = true;
+                prevVolume = volume;
                 setVolume(0);
-                System.out.println("The TV is now muted\n");
+                System.out.print("The TV is now muted\n");
 
             } else {
-                this.mute = false;
+                mute = false;
                 int temp = volume;
-                setVolume(this.prevVolume);
+                setVolume(prevVolume);
                 prevVolume = temp;
-                System.out.println("The TV is now unmuted \n");
+                System.out.print("The TV is now unmuted \n");
             }
         }
     }
 
     public void flashback() {
-        if (this.power) {
+        if (power) {
             int temp = getCurrentChannel();
-            setCurrentChannel(this.prevChannel);
+            setCurrentChannel(prevChannel);
             setPrevChannel(temp);
         }
     }
 
     public void powerState() {
-        if (!this.power) {
-            this.power = true;
-            System.out.println("The TV is now powered on\n");
+        if (!power) {
+            power = true;
+            System.out.print("The TV is now powered on\n");
         } else {
-            this.power = false;
-            System.out.println("The TV is now powered off\n");
+            power = false;
+            System.out.print("The TV is now powered off\n");
         }
     }
 
     public void channelUp() {
-        if (this.power) {
+        if (power) {
             setPrevChannel(currentChannel);
-            this.currentChannel = this.currentChannel + 1;
-            System.out.println("The current channel is now " + this.currentChannel + "\n");
+            currentChannel = currentChannel + 1;
+            System.out.print("The current channel is now " + currentChannel + "\n");
         }
     }
 
     public void channelDown() {
-        if (this.power) {
+        if (power) {
             setPrevChannel(currentChannel);
-            this.currentChannel = this.currentChannel - 1;
-            System.out.println("The current channel is now " + this.currentChannel + "\n");
+            currentChannel = currentChannel - 1;
+            System.out.print("The current channel is now " + currentChannel + "\n");
         }
     }
 }
