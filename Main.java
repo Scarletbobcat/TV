@@ -9,8 +9,8 @@ public class Main {
 
     public static void main(String[] args) {
         //Initializing the "manufacturer's code"
-        String key1 = "FirstRemote";
-        String key2 = "SecondRemote";
+        final String key1 = "FirstRemote";
+        final String key2 = "SecondRemote";
         //Instantiate two remotes with different keys as manufacturer's code
         Remote remote1 = new Remote(key1);
         Remote remote2 = new Remote(key2);
