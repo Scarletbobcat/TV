@@ -1,7 +1,7 @@
 //Tien Hoang
 public class Remote {
-    public Remote(String key1) {
-        manuCode = key1;
+    public Remote(String key) {
+        manuCode = key;
     }
 
     final private String manuCode;
